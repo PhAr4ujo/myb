@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "supply": "json-server --watch db/db.json"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.1.4",
+    "bootstrap": "^5.3.3",
     "core-js": "^3.8.3",
+    "json-server": "^1.0.0-beta.1",
+    "portal-vue": "^3.0.0-beta.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
