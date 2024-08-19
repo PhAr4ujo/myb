@@ -29,6 +29,6 @@
     }
 
     .main{
-      height: 84vh;
+      height: auto;
     }
 </style>
