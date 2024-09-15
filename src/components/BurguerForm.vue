@@ -1,12 +1,11 @@
 <template>
     <div id="main" class="d-flex align-items-center justify-content-center">
         <form action="" class="bg-dark p-4 round-1" method="post" @submit="createBurguer">
-        
 
-            <div class="row">
-                <div class="col-sm-12 select">
-                    <label for="breadSelection" class="form-label text-white">Bread</label>
-                    <input type="text" name="" id="">
+            <div class="row pt-3">
+                <div class="col-sm-12 input">
+                    <label for="breadSelection" class="form-label text-white">Name</label>
+                    <input type="text" class="form-control bg-dark text-white" v-model="name" name="inputName" id="">
                 </div>
             </div>
 
@@ -61,7 +60,7 @@
         height: 50%
     }
 
-    .select{
+    .select, .input{
         height: 15%;
     }
 
@@ -116,8 +115,23 @@
                     extra: Array.from(this.extras),
                     status: "Requested"
                 }
-                console.log(data);
+
+                const dataJson = JSON.stringify(data);
+
+                const req = await fetch("http://localhost:3000/burguers",{
+                    method : "POST",
+                    headers : { "Content-Type" : "application/json" },
+                    body : dataJson,
+                })
+                
+                const res = await req.json();
+
+                this.name = "";
+                this.bread = "";
+                this.meat = "";
+                this.extra = "";
             }
+
         },
 
         mounted(){
